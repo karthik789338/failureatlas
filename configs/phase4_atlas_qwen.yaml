@@ -1,0 +1,43 @@
+feature_dir: outputs/features/qwen_7b_mvp
+atlas_dir: outputs/atlas/qwen_7b_mvp
+
+preprocess:
+  standardize: true
+
+pca:
+  n_components: 50
+  random_state: 42
+
+umap:
+  enabled: true
+  n_neighbors: 30
+  min_dist: 0.10
+  metric: euclidean
+  random_state: 42
+
+cluster_umap:
+  enabled: true
+  n_components: 10
+  n_neighbors: 30
+  min_dist: 0.00
+  metric: euclidean
+  random_state: 42
+
+hdbscan:
+  enabled: true
+  min_cluster_size: 40
+  min_samples: 10
+  metric: euclidean
+  cluster_selection_method: eom
+
+kmeans:
+  k_values: [6, 8, 10, 12, 15, 20]
+  random_state: 42
+  n_init: 20
+
+analysis:
+  label_columns:
+    - failure_binary
+    - failure_family
+    - failure_type
+  confidence_threshold: 0.50

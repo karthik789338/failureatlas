@@ -1,0 +1,38 @@
+feature_dir: outputs/features/qwen_7b_mvp
+judged_path: outputs/judged/qwen_7b_mvp_judged_repaired.jsonl
+output_dir: outputs/meta_controller/qwen_7b_mvp/phase5b_paired
+
+feature_layout:
+  num_layers: 5
+  num_positions: 5
+  projection_dim: 64
+  positions:
+    prompt_final: 0
+    response_25: 1
+    response_50: 2
+    response_75: 3
+    response_final: 4
+
+pairing:
+  min_prompt_similarity: 0.05
+  max_pairs_per_group: null
+  allow_fallback_group: true
+  random_state: 42
+
+splits:
+  test_size: 0.25
+  random_state: 42
+
+models:
+  pca_components: 100
+  logistic_max_iter: 3000
+  tfidf_max_features: 12000
+  tfidf_ngram_min: 1
+  tfidf_ngram_max: 2
+
+stages:
+  - prompt_final
+  - response_25
+  - response_50
+  - response_75
+  - response_final

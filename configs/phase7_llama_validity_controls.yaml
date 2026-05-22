@@ -1,0 +1,35 @@
+feature_dir: outputs/features/llama_8b_mvp
+atlas_dir: outputs/atlas/llama_8b_mvp
+control_dir: outputs/atlas/llama_8b_mvp/validity_controls
+
+pca:
+  n_components: 50
+  random_state: 42
+
+within_family:
+  min_rows: 80
+  pca_components: 30
+  use_umap: true
+  umap_components: 10
+  umap_neighbors: 20
+  hdbscan_min_cluster_size: 20
+  hdbscan_min_samples: 5
+
+failure_only:
+  pca_components: 50
+  use_umap: true
+  umap_components: 10
+  umap_neighbors: 30
+  hdbscan_min_cluster_size: 20
+  hdbscan_min_samples: 5
+
+classifiers:
+  test_size: 0.25
+  random_state: 42
+  pca_components: 100
+  targets:
+    - source_dataset
+    - failure_family
+    - failure_binary
+    - failure_type
+    - failure_type_failures_only

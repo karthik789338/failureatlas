@@ -1,0 +1,34 @@
+feature_dir: outputs/features/qwen_7b_mvp
+output_dir: outputs/meta_controller/qwen_7b_mvp
+
+feature_layout:
+  num_layers: 5
+  num_positions: 5
+  projection_dim: 64
+  positions:
+    prompt_final: 0
+    response_25: 1
+    response_50: 2
+    response_75: 3
+    response_final: 4
+
+splits:
+  test_size: 0.25
+  random_state: 42
+
+models:
+  pca_components: 100
+  logistic_max_iter: 3000
+
+tasks:
+  binary_failure: true
+  failure_type_failures_only: true
+  within_family_binary: true
+  leave_one_family_out_binary: true
+
+stages:
+  - prompt_final
+  - response_25
+  - response_50
+  - response_75
+  - response_final

@@ -1,0 +1,24 @@
+input_path: outputs/generations/qwen_7b_mvp_outputs.jsonl
+output_path: outputs/judged/qwen_7b_mvp_judged.jsonl
+
+model:
+  name: Qwen/Qwen2.5-7B-Instruct
+  torch_dtype: auto
+  device_map: auto
+  trust_remote_code: true
+
+generation:
+  max_new_tokens: 220
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+
+runtime:
+  limit: null
+  log_every: 25
+  save_every: 25
+  seed: 42
+
+judge:
+  max_prompt_chars: 1800
+  max_response_chars: 2200

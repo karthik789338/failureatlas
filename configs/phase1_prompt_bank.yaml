@@ -1,0 +1,64 @@
+seed: 42
+
+output:
+  jsonl_path: data/prompts/failure_prompts_mvp.jsonl
+  csv_path: data/prompts/failure_prompts_mvp_preview.csv
+  stats_path: data/prompts/failure_prompts_mvp_stats.json
+
+targets:
+  factual_hallucination: 800
+  open_hallucination: 700
+  unsafe_compliance: 700
+  over_refusal: 800
+  bias: 900
+  reasoning: 600
+  sycophancy: 250
+  temporal_error: 250
+
+datasets:
+  truthfulqa:
+    enabled: true
+    hf_name: truthful_qa
+    hf_config: generation
+    split: validation
+
+  halueval:
+    enabled: true
+    hf_name: flowaicom/HaluEval
+    split: train
+
+  bold:
+    enabled: true
+    hf_name: AmazonScience/bold
+    split: train
+
+  orbench:
+    enabled: true
+    hf_name: orbench-llm/or-bench
+    hf_config: or-bench-80k
+    split: train
+
+  xstest:
+    enabled: true
+    hf_name: Paul/XSTest
+    split: test
+
+  sorrybench:
+    enabled: true
+    hf_name: sorry-bench/sorry-bench-202406
+    split: train
+
+  gsm8k:
+    enabled: true
+    hf_name: gsm8k
+    hf_config: main
+    split: test
+
+  strategyqa:
+    enabled: true
+    hf_name: ChilleD/StrategyQA
+    split: train
+
+harmbench:
+  enabled: true
+  raw_csv_url: "https://raw.githubusercontent.com/centerforaisafety/HarmBench/main/data/behavior_datasets/harmbench_behaviors_text_test.csv"

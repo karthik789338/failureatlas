@@ -1,0 +1,23 @@
+input_path: outputs/interventions/qwen_7b_mvp/generic_baseline/generic_intervention_outputs.jsonl
+output_path: outputs/interventions/qwen_7b_mvp/generic_baseline/generic_intervention_judged.jsonl
+
+model:
+  name: Qwen/Qwen2.5-7B-Instruct
+  torch_dtype: auto
+  device_map: auto
+  trust_remote_code: true
+
+generation:
+  max_new_tokens: 160
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+
+judge:
+  max_prompt_chars: 1800
+  max_response_chars: 2200
+
+runtime:
+  log_every: 20
+  save_every: 20
+  seed: 42
