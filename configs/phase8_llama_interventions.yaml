@@ -1,0 +1,33 @@
+judged_path: outputs/judged/llama_8b_mvp_judged_by_qwen.jsonl
+cluster_assignments_path: outputs/atlas/llama_8b_mvp/cluster_assignments.csv
+output_dir: outputs/interventions/llama_8b_mvp
+
+model:
+  name: meta-llama/Llama-3.1-8B-Instruct
+  torch_dtype: auto
+  device_map: auto
+  trust_remote_code: true
+
+generation:
+  max_new_tokens: 256
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+
+sampling:
+  max_per_failure_type: 50
+  include_failure_types:
+    - factual_hallucination
+    - open_hallucination
+    - reasoning
+    - temporal_error
+    - bias
+    - over_refusal
+    - unsafe_compliance
+    - sycophancy
+  random_state: 42
+
+runtime:
+  log_every: 20
+  save_every: 20
+  seed: 42
